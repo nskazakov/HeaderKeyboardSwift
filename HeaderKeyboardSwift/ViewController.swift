@@ -16,19 +16,36 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.stackView.spacing = 20
+        
         self.keyboardToolbar.color = .lightGray
+        self.keyboardToolbar.initDefaultStackView()
+        self.keyboardToolbar.onClickNext = { [weak self] in
+            self?.twoTextFieldView.becomeFirstResponder()
+        }
+        self.keyboardToolbar.onClickPrevios = { [weak self] in
+            self?.fiveTextFieldView.becomeFirstResponder()
+        }
+        
+        self.keyboardToolbar.onClickDone = { [weak self] in
+            self?.oneTextFieldView.resignFirstResponder()
+        }
+        
         self.oneTextFieldView.tag = 0
         self.oneTextFieldView.placeholder = "One text field"
         self.twoTextFieldView.placeholder = "Two text field"
         self.threeTextFieldView.placeholder = "Three text field"
         self.fourTextFieldView.placeholder = "Four text field"
         self.fiveTextFieldView.placeholder = "Five text field"
-
+        
+        self.oneTextFieldView.inputAccessoryView = self.keyboardToolbar
+        
+        
         self.oneTextFieldView.delegate = self
         self.twoTextFieldView.delegate = self
         self.threeTextFieldView.delegate = self
         self.fourTextFieldView.delegate = self
         self.fiveTextFieldView.delegate = self
+        
         
         self.stackView.addArrangedSubview(oneTextFieldView)
         self.stackView.addArrangedSubview(twoTextFieldView)
@@ -36,10 +53,6 @@ class ViewController: UIViewController {
         self.stackView.addArrangedSubview(fourTextFieldView)
         self.stackView.addArrangedSubview(fiveTextFieldView)
     }
-    
-    
-    
-    
 }
 
 extension ViewController: UITextFieldDelegate {

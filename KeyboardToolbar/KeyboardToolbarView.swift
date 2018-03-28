@@ -26,15 +26,34 @@ class KeyboardToolbarView: UIView {
     
     private func configureView() {
         self.leftStackView.alignment = .center
-        self.leftStackView.spacing = 10
-        self.leftStackView.distribution = .fill
+        self.leftStackView.spacing = 2
+        self.leftStackView.distribution = .fillEqually
         
         self.rightStackView.alignment = .center
         self.rightStackView.spacing = 10
         self.rightStackView.distribution = .fill
     }
     
-    func initStackView(nextButton: UIButton, previosButton: UIButton, rightButton: UIButton) {
+    public func initDefaultStackView() {
+        let nextButton = UIButton()
+        let previosButton = UIButton()
+        let doneButton = UIButton()
+        
+        nextButton.addTarget(self, action: #selector(pressNextButton), for: .touchUpInside)
+        nextButton.setImage(#imageLiteral(resourceName: "down-arrow"), for: .normal)
+        
+        previosButton.addTarget(self, action: #selector(pressPreviosButton), for: .touchUpInside)
+        previosButton.setImage(#imageLiteral(resourceName: "up-arrow"), for: .normal)
+        
+        doneButton.addTarget(self, action: #selector(pressDoneButton), for: .touchUpInside)
+        doneButton.setTitle("Готово", for: .normal)
+        
+        self.leftStackView.addArrangedSubview(nextButton)
+        self.leftStackView.addArrangedSubview(previosButton)
+        self.rightStackView.addArrangedSubview(doneButton)
+    }
+    
+    public func initCustomStackViewWith(nextButton: UIButton, previosButton: UIButton, rightButton: UIButton) {
         nextButton.addTarget(self, action: #selector(pressNextButton), for: .touchUpInside)
         nextButton.setImage(self.nextButtonImage, for: .normal)
         
