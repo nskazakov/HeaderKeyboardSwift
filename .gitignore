@@ -1,6 +1,7 @@
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+.DS_Store
 
 ## Build generated
 build/
@@ -37,6 +38,8 @@ playground.xcworkspace
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
 # Packages/
 # Package.pins
+.idea/
+.builds/
 .build/
 
 # CocoaPods
@@ -46,6 +49,13 @@ playground.xcworkspace
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
 # Pods/
+Pods
+Hopplers/Podfile.lock
+/Build/
+# fastlane specific
+*/fastlane/report.xml
+*/fastlane/README.md
+
 
 # Carthage
 #
@@ -65,3 +75,5 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+*/fastlane/README.md
+
